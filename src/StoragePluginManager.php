@@ -39,13 +39,10 @@ class StoragePluginManager extends AbstractPluginManager {
      */
     public function validatePlugin($plugin) {
         if ($plugin instanceof Storage\StorageInterface) {
-            // we're okay
             return;
         }
 
-        throw new Storage\Exception\RuntimeException(sprintf(
-                'Plugin of type %s is invalid; must implement %s\Storage\StorageInterfaceInterface', (is_object($plugin) ? get_class($plugin) : gettype($plugin)), __NAMESPACE__
-        ));
+        throw new Storage\Exception\RuntimeException(sprintf('Plugin of type %s is invalid; must implement %s\Storage\StorageInterfaceInterface', (is_object($plugin) ? get_class($plugin) : gettype($plugin)), __NAMESPACE__));
     }
 
 }
